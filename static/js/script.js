@@ -128,7 +128,7 @@ function onClear(){
 
 // post data to server for recognition
 function onRecognition() {
-    console.time("time");
+    /*console.time("time");
 
     $.ajax({
             url: './DigitRecognition',
@@ -144,7 +144,9 @@ function onRecognition() {
             alert("Error: Model Not Loaded: Sridhar");
         })
 
-    console.timeEnd("time");
+    console.timeEnd("time");*/
+    var c=document.getElementById("cvsIn");
+    var d=c.toDataURL("image/png");
 }
 
 
