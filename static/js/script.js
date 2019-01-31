@@ -17,7 +17,7 @@ window.onload = function(){
     
     initProbGraph();
     //Added by Sridhar
-    model = await tf.loadModel('model/model.json')
+    //model = await tf.loadModel('model/model.json')
 }
 
 // init probability graph
