@@ -141,7 +141,7 @@ function onRecognition() {
 
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest);
-            alert("error");
+            alert("Error: Model Not Loaded: Sridhar");
         })
 
     console.timeEnd("time");
