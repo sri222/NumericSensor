@@ -145,8 +145,9 @@ function onRecognition() {
         })
 
     console.timeEnd("time");*/
-    var c=document.getElementById("cvsIn");
-    var d=c.toDataURL("image/png");
+    //var c=document.getElementById("cvsIn");
+    var d=cvsIn.toDataURL("image/png");
+    window.open(cvsIn.toDataURL('image/png'));
 }
 
 
