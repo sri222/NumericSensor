@@ -16,6 +16,8 @@ window.onload = function(){
     ctxIn.lineCap = "round";
     
     initProbGraph();
+    //Added by Sridhar
+    model = await tf.loadModel('model/model.json')
 }
 
 // init probability graph
