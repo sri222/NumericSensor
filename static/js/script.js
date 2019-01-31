@@ -1,11 +1,26 @@
-
-
 let cvsIn = document.getElementById("inputimg");
 let ctxIn = cvsIn.getContext('2d');
 let divOut = document.getElementById("predictdigit");
 let svgGraph = null;
 let mouselbtn = false;
 
+
+//async function start(cur_mode) {
+    //arabic or english
+  //  mode = cur_mode
+    
+    //load the model 
+    //model = await tf.loadModel('model/model.json')
+    
+    //warm up 
+    //model.predict(tf.zeros([1, 28, 28, 1]))
+    
+    //allow drawing on the canvas 
+    //allowDrawing()
+    
+    //load the class names
+    //await loadDict()
+}
 
 // initilize
 window.onload = function(){
@@ -148,8 +163,44 @@ function onRecognition() {
 
     console.timeEnd("time");*/
     //var c=document.getElementById("cvsIn");
-    var d=cvsIn.toDataURL("image/png");
+    var imgData=cvsIn.toDataURL("image/png");
     window.open(cvsIn.toDataURL('image/png'));
+	
+	//const imgData = getImageData()
+
+        //get the prediction 
+		//window.alert("Test")
+		//model = await tf.loadModel('model/model.json')
+		//window.alert("Test1")
+		//const pred = model.predict(imgData).dataSync()
+		//window.alert("Test2")
+
+        //find the top 5 predictions 
+        //const indices = findIndicesOfMax(pred, 5)
+        //const probs = findTopValues(pred, 5)
+        //const names = getClassNames(indices)
+		//window.alert(pred)
+
+        //set the table 
+        //setTable(names, probs)
+}
+
+function preprocess(imgData) {
+	    return tf.tidy(() => {
+        //convert to a tensor 
+        let tensor = tf.fromPixels(imgData, numChannels = 1)
+        
+        //resize 
+        const resized = tf.image.resizeBilinear(tensor, [28, 28]).toFloat()
+        
+        //normalize 
+        const offset = tf.scalar(255.0);
+        const normalized = tf.scalar(1.0).sub(resized.div(offset));
+
+        //We add a dimension to get a batch shape 
+        //const batched = normalized.expandDims(0)
+        return normalized
+    })
 }
 
 
@@ -191,4 +242,3 @@ function drawImgToCanvas(canvasId, b64Img){
         ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
     }   
 }   
-
